@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Top Picks for You - Craival</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "on-surface": "#e5e2e1",
+                        "secondary-fixed": "#ffe16d",
+                        "tertiary-container": "#41a447",
+                        "surface-tint": "#ffb3b1",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#313030",
+                        "primary": "#ffb3b1",
+                        "tertiary-fixed": "#94f990",
+                        "outline-variant": "#5b403f",
+                        "on-tertiary-fixed": "#002204",
+                        "secondary-fixed-dim": "#e9c400",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#221b00",
+                        "on-tertiary": "#00390a",
+                        "inverse-primary": "#bb162c",
+                        "on-primary-container": "#5b000e",
+                        "surface-container-low": "#1b1b1b",
+                        "error": "#ffb4ab",
+                        "surface-container": "#20201f",
+                        "secondary-container": "#ffdb3c",
+                        "on-surface-variant": "#e4bebc",
+                        "on-secondary": "#3a3000",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#003208",
+                        "primary-fixed-dim": "#ffb3b1",
+                        "outline": "#ab8987",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#92001c",
+                        "on-primary": "#680011",
+                        "secondary": "#fff9ef",
+                        "tertiary": "#78dc77",
+                        "surface-container-highest": "#353535",
+                        "primary-fixed": "#ffdad8",
+                        "on-background": "#e5e2e1",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#410007",
+                        "on-secondary-container": "#725f00",
+                        "primary-container": "#ff535a",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "background": "#131313",
+                        "surface-variant": "#353535",
+                        "on-secondary-fixed-variant": "#544600",
+                        "tertiary-fixed-dim": "#78dc77",
+                        "surface-dim": "#131313"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xxl": "48px",
+                        "margin-desktop": "64px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "base": "8px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Outfit"],
+                        "headline-xl-mobile": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "headline-sm": ["Outfit"],
+                        "headline-lg": ["Outfit"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+        }
+        
+        .ai-gradient-border {
+            border-left: 3px solid transparent;
+            border-image: linear-gradient(to bottom, #E23744, #FFD700) 1;
+        }
+        
+        .staggered-fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/40">
+<div class="flex items-center gap-6">
+<span class="text-headline-md font-headline-md font-bold text-primary">Craival</span>
+<div class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Explore</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-headline-md text-headline-md transition-transform scale-95" href="#">Search</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md" href="#">Bookmarks</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md">Sign In</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-xxl flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg">Top Picks for You</h1>
+<span class="glass-panel px-3 py-1 rounded-full text-label-md font-label-md flex items-center gap-1 text-secondary-fixed">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+                    AI Ranked
+                </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">5 Results Found</p>
+<div class="inline-flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-lg border border-outline/30 mt-2 w-fit">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">info</span>
+<span class="font-body-sm text-body-sm text-on-surface">We expanded your search — budget filter relaxed</span>
+</div>
+</header>
+<!-- Results Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform staggered-fade-up delay-1">
+<div class="relative h-48">
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-end, appetizing photo of a modern fusion dish plated elegantly on dark ceramicware. Warm, focused lighting highlights the textures of the food against a deep, dark glassmorphic background environment with subtle red neon reflections. Premium night-out aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxcZ5xT3KYZFYTmBJWmPnTXoMEZ5Mdtwxlsk5eneuP5VA0g8gKAWdHYVI89egbAlVJ68DPWFyEjMesb6q6AewWtXz1xzkMwkbhdB62v1463StVhoGn9p-NLSlLLaS4WQ-VcynWzpBHcwQflpB9c0rzOjezJ8XQjCxiMOMjrhKv27zD0JtZUKAhnqL4Wm4AGqREMfCPDfpoxLXgInzB8igZ-isoRvL6OnoKKFjnzhYHhSL0uztn6PSH4jqwELWqnO-wvlDNkbWIZsM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+<div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-full text-label-md font-label-md font-bold text-primary-fixed">#1</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1; color: #FFD700;">star</span>
+                            4.9
+                        </span>
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md">₹2000 for two</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">The Crimson Room</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Modern Asian Fusion • Downtown</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-outline/50 px-2 py-1 rounded-full text-[10px] font-label-md uppercase tracking-wider text-on-surface-variant">Online Order</span>
+<span class="border border-outline/50 px-2 py-1 rounded-full text-[10px] font-label-md uppercase tracking-wider text-on-surface-variant">Book Table</span>
+</div>
+<div class="bg-surface-container/50 p-3 rounded-lg mt-auto ai-gradient-border relative overflow-hidden">
+<span class="material-symbols-outlined absolute top-2 right-2 text-secondary-fixed/20 text-[24px]">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface italic relative z-10">Matches your craving for spicy noodles, highly rated for its ambiance.</p>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline/20">
+<span class="text-label-md font-label-md text-on-surface-variant">Was this helpful?</span>
+<div class="flex gap-2">
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-tertiary-fixed"><span class="material-symbols-outlined text-[20px]">thumb_up</span></button>
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[20px]">thumb_down</span></button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform staggered-fade-up delay-2">
+<div class="relative h-48">
+<div class="w-full h-full bg-cover bg-center" data-alt="A sophisticated close-up of a craft cocktail and small plates on a dark marble table. Cinematic lighting creates sharp contrast and deep shadows, enhancing the rich reds and golds of the food and drink. The setting feels exclusive and moody, perfect for a high-end AI recommendation system." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCQqiSBWCoUiYvDtWNnezi3kptGwteE0EZiXwBnd2nOmMttJ_E5dDQhLsb98TEXZK_GRKl5-lssOxbMJuqqtzIP0XudjUiMRJUR4ZPgBhy60b4mdE2aOOt8rLY4edsXxqaBJHR6FHcdscgpWHqhs7cP5stnLfOI1cDTGOBbOvJv3iJGBgHatr6ZejxqM8sVloiYmXAjfVx7RIYRY3ss-UjcphfDSTezP5Kcmj0NJiQGv2M3OoW1nMyUCzKSwcBBppep5Ydraj6NEc0')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+<div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-full text-label-md font-label-md font-bold text-on-surface">#2</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1; color: #FFD700;">star</span>
+                            4.7
+                        </span>
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md">₹1500 for two</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Midnight Bites</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tapas &amp; Cocktails • West End</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-outline/50 px-2 py-1 rounded-full text-[10px] font-label-md uppercase tracking-wider text-on-surface-variant">Book Table</span>
+</div>
+<div class="bg-surface-container/50 p-3 rounded-lg mt-auto ai-gradient-border relative overflow-hidden">
+<span class="material-symbols-outlined absolute top-2 right-2 text-secondary-fixed/20 text-[24px]">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface italic relative z-10">Great alternative vibe. Fits your historical preference for late-night tapas.</p>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline/20">
+<span class="text-label-md font-label-md text-on-surface-variant">Was this helpful?</span>
+<div class="flex gap-2">
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-tertiary-fixed"><span class="material-symbols-outlined text-[20px]">thumb_up</span></button>
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[20px]">thumb_down</span></button>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="glass-panel rounded-xl overflow-hidden flex flex-col group cursor-pointer hover:-translate-y-1 transition-transform staggered-fade-up delay-3">
+<div class="relative h-48">
+<div class="w-full h-full bg-cover bg-center" data-alt="An atmospheric shot of a gourmet pizza being sliced, steam rising in a dimly lit, chic pizzeria environment. The dark background is offset by the warm, appetizing glow illuminating the crispy crust and melting cheese. Fits a premium, dark-mode culinary app interface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCoszU4h7slejn82zvlwuK8VR4-D8Qa6-ArMnKQIVhleF0tibOsa-zXBIa4rJQkXtLq4HBzmWwzUmLisl4GopB0ttd_86KoCgXNydRqygS8OaJW3o88UwE236UoD_bJXE3apC0bMfR8rb7BtmdZjaHAW1gp0cuH5UQorqRHBSNyO7g1tZ_d5QJQ-_sCdXZ326imlRLA8_w7-2f3ptcGniRUxMovmKjlwSOMqljkAkFbW7w7U8bD1WDj3JMzzcNyLpeUac1bhf_xst8')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent"></div>
+<div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded-full text-label-md font-label-md font-bold text-on-surface">#3</div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1; color: #FFD700;">star</span>
+                            4.5
+                        </span>
+<span class="glass-panel px-2 py-1 rounded-md text-label-md font-label-md">₹2500 for two</span>
+</div>
+</div>
+<div class="p-4 flex flex-col flex-grow gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md mb-1 group-hover:text-primary transition-colors">Oven &amp; Vine</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Italian Fine Dining • North Hills</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="border border-outline/50 px-2 py-1 rounded-full text-[10px] font-label-md uppercase tracking-wider text-on-surface-variant">Online Order</span>
+</div>
+<div class="bg-surface-container/50 p-3 rounded-lg mt-auto ai-gradient-border relative overflow-hidden">
+<span class="material-symbols-outlined absolute top-2 right-2 text-secondary-fixed/20 text-[24px]">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface italic relative z-10">Slightly above budget, but highly relevant for your 'date night' tag.</p>
+</div>
+<div class="flex justify-between items-center pt-2 border-t border-outline/20">
+<span class="text-label-md font-label-md text-on-surface-variant">Was this helpful?</span>
+<div class="flex gap-2">
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-tertiary-fixed"><span class="material-symbols-outlined text-[20px]">thumb_up</span></button>
+<button class="p-1 rounded-full hover:bg-surface-bright/50 transition-colors text-on-surface-variant hover:text-error"><span class="material-symbols-outlined text-[20px]">thumb_down</span></button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center h-16 md:hidden px-4 bg-surface/80 backdrop-blur-xl border-t border-white/10 shadow-[0_-10px_20px_rgba(0,0,0,0.4)] rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 w-16 h-full rounded-lg transition-colors">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-md text-[10px] mt-1">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary hover:bg-surface-bright/20 w-16 h-full rounded-lg transition-colors scale-90">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-md text-[10px] mt-1">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 w-16 h-full rounded-lg transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-md text-[10px] mt-1">Saved</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-bright/20 w-16 h-full rounded-lg transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px] mt-1">Profile</span>
+</button>
+</nav>
+<!-- Refine Bar (Desktop bottom, sits above mobile nav on small screens) -->
+<div class="fixed bottom-0 md:bottom-6 w-full z-40 px-margin-mobile md:px-margin-desktop pointer-events-none pb-20 md:pb-0 flex justify-center">
+<div class="glass-panel rounded-full px-6 py-3 flex items-center gap-4 pointer-events-auto shadow-2xl">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider hidden sm:block">Not quite right?</span>
+<button class="bg-primary-container text-on-primary-container hover:bg-primary px-4 py-2 rounded-full font-label-md text-label-md transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                Refine Search
+            </button>
+</div>
+</div>
+</body></html>

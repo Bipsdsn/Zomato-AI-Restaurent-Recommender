@@ -1,0 +1,8 @@
+Before making your final ranking, think step-by-step for each restaurant:
+1. How well does it match the user's cuisine preference?
+2. Is it within the stated budget?
+3. Does the rating meet or exceed expectations?
+4. Does the restaurant type and style fit the user's additional preferences (e.g., family-friendly, romantic, quick service)?
+5. Are any popular dishes particularly relevant?
+
+Then rank the top 5 restaurants from best to worst fit based on your analysis.

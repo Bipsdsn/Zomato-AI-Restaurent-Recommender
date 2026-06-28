@@ -1,0 +1,6 @@
+A user is looking for restaurant recommendations with these preferences:
+- Location: {location}
+- Budget: {budget_tier} (up to Rs{budget_max} for two)
+- Cuisine preference: {cuisine}
+- Minimum rating: {min_rating}/5
+- Additional preferences: {additional_prefs}

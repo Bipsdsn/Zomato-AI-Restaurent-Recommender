@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craival - Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Outfit:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#393939",
+                    "on-surface": "#e5e2e1",
+                    "secondary-fixed": "#ffe16d",
+                    "tertiary-container": "#41a447",
+                    "surface-tint": "#ffb3b1",
+                    "on-error": "#690005",
+                    "inverse-on-surface": "#313030",
+                    "primary": "#ffb3b1",
+                    "tertiary-fixed": "#94f990",
+                    "outline-variant": "#5b403f",
+                    "on-tertiary-fixed": "#002204",
+                    "secondary-fixed-dim": "#e9c400",
+                    "surface-container-high": "#2a2a2a",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#221b00",
+                    "on-tertiary": "#00390a",
+                    "inverse-primary": "#bb162c",
+                    "on-primary-container": "#5b000e",
+                    "surface-container-low": "#1b1b1b",
+                    "error": "#ffb4ab",
+                    "surface-container": "#20201f",
+                    "secondary-container": "#ffdb3c",
+                    "on-surface-variant": "#e4bebc",
+                    "on-secondary": "#3a3000",
+                    "surface": "#131313",
+                    "on-tertiary-container": "#003208",
+                    "primary-fixed-dim": "#ffb3b1",
+                    "outline": "#ab8987",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-fixed-variant": "#92001c",
+                    "on-primary": "#680011",
+                    "secondary": "#fff9ef",
+                    "tertiary": "#78dc77",
+                    "surface-container-highest": "#353535",
+                    "primary-fixed": "#ffdad8",
+                    "on-background": "#e5e2e1",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary-fixed": "#410007",
+                    "on-secondary-container": "#725f00",
+                    "primary-container": "#ff535a",
+                    "on-tertiary-fixed-variant": "#005313",
+                    "background": "#131313",
+                    "surface-variant": "#353535",
+                    "on-secondary-fixed-variant": "#544600",
+                    "tertiary-fixed-dim": "#78dc77",
+                    "surface-dim": "#131313"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xxl": "48px",
+                    "margin-desktop": "64px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "base": "8px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Outfit"],
+                    "headline-xl-mobile": ["Outfit"],
+                    "headline-md": ["Outfit"],
+                    "headline-sm": ["Outfit"],
+                    "headline-lg": ["Outfit"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-xl-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .chip {
+            background: rgba(57, 57, 57, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .chip:hover {
+            background: rgba(255, 179, 177, 0.2);
+            border-color: #ffb3b1;
+        }
+        
+        /* Floating animation for the empty state icon */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen antialiased flex flex-col">
+<!-- Main Content Area - Centered Empty State -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-xxl">
+<div class="glass-card rounded-xl p-lg md:p-xl max-w-2xl w-full text-center flex flex-col items-center space-y-lg relative overflow-hidden">
+<!-- Subtle gradient orb in background of card -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="w-32 h-32 md:w-48 md:h-48 relative floating-icon mb-4">
+<img class="w-full h-full object-contain filter drop-shadow-2xl" data-alt="A stylized, premium 3D illustration of an empty silver serving platter or cloche, set against a dark background with subtle moody lighting. The illustration should fit seamlessly into a dark mode, glassmorphic UI, feeling elegant, appetizing yet clearly signifying 'empty' or 'no results'. High contrast, soft shadows, with a hint of red accent lighting reflecting off the silver surface to match the brand palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtDsQ-pw_7m6r-nAGioyegwZTUFHh_2-SW8txJk-2HHx30t1QmiaB1Yq5VHbl-3LJ-A0pvIsnKh8j8uJCipXghhFZIlDc7XTLQ1MOWaed04jgXSzY4ktKNTKSfZWxnC2jlBx6G1iqK6w8KepY1KekbyOL0outgJfPxO0C-fX09q0vjqsVh4zbgu1qLijN-4wSmf9ipPUzKV-SmoOSmmc2SGX2vh5drOrXt5Ja4zcErSQ5RpHHYYrtTRglMFcqs7hQ0sNJDIz8Qhnw"/>
+</div>
+<div class="space-y-sm max-w-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary">No matches found</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">We couldn't find any spots matching your exact cravings in Bangalore right now. Try adjusting your preferences.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-sm mt-md w-full">
+<button class="chip rounded-full px-4 py-2 font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                    Relax budget
+                </button>
+<button class="chip rounded-full px-4 py-2 font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                    Change location
+                </button>
+<button class="chip rounded-full px-4 py-2 font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">star_half</span>
+                    Lower rating
+                </button>
+<button class="chip rounded-full px-4 py-2 font-label-md text-label-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">explore</span>
+                    Nearby areas
+                </button>
+</div>
+<button class="mt-xl bg-[#E23744] hover:bg-[#bb162c] text-white font-label-md text-label-md uppercase tracking-wider py-3 px-8 rounded-full transition-colors shadow-lg shadow-black/50 flex items-center gap-sm">
+<span class="material-symbols-outlined">tune</span>
+                Adjust Filters
+            </button>
+</div>
+<!-- Optional Error State / Fallback Divider (simulated flow) -->
+<div class="w-full max-w-4xl mt-xxl opacity-60 hover:opacity-100 transition-opacity duration-500">
+<div class="flex items-center justify-center gap-md mb-lg text-center">
+<div class="h-px bg-white/10 flex-grow"></div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary-fixed">smart_toy</span>
+<span class="font-body-sm text-body-sm">Our AI is taking a break — here are popular picks instead.</span>
+</div>
+<div class="h-px bg-white/10 flex-grow"></div>
+</div>
+<!-- Fallback Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<div class="glass-card rounded-xl h-48 relative overflow-hidden group cursor-pointer">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A moody, high-end photograph of a perfectly seared steak on a dark ceramic plate, dimly lit with warm, appetizing spotlights in a sophisticated restaurant setting. Deep shadows, rich textures, evoking a premium dining experience for a dark mode UI." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBI5LGnoDKu1B-vwiJimVDhZ925VmDoXF3yH8jO-gjOz_v2v1PnipFlHo18PNmmzcJI4ycU6PUFheN5Lywg0t1kA1xDE-qMaGwBWCb63a8F-gvowQIXYdv408iDw47tqbFXrVPMNm4b1i8FJ6CQC96-cv-yA7UY_7CGtTF4HyJGtCFE9Cbd5wqyH6vULwd_Kxz3yE2K4ErC-XMVw70_X88UEDj68Jtm_m69J1h0CaD5TAd1K8CMfLKnjDwvSq4br-Q0PCVB4Y0kMtc')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<span class="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-label-md text-label-md px-2 py-1 rounded-full mb-1">Steakhouse</span>
+<h3 class="font-headline-sm text-headline-sm text-white truncate">The Midnight Grill</h3>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-xl h-48 relative overflow-hidden group cursor-pointer md:col-span-2">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="An overhead shot of vibrant, artfully plated sushi and sashimi on a dark slate board. Subtle neon reflections in the background suggest an upscale, modern Asian fusion lounge in a bustling city at night. Dark mode aesthetic, high contrast." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAchTu1byZPt0f9JggguOKV1M0bNfoFM1nqVWgQhwPuza3TUYMGqDjmDH7LmvtDEDsJc3IrjzOBgY4iXGZWYGKP2qkcZszlDUs_C2faTlWI7XmCqBa-zE38V8eGlPPfKmvbcue6Aiq60PHGeaIk6HrsuUx5rXmjZ1AcY84yhYwL866DNg64HHKbp69cPpf0CmAujE8uEsZlAyhhKGtXH8-fD9mAtZWgUk0dpOPzrCxNzwVXTVKC_Bux18n8yLfqAd-F9x3pqr-Jmms')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<span class="inline-block bg-primary/20 backdrop-blur-md border border-primary/30 text-primary font-label-md text-label-md px-2 py-1 rounded-full mb-1">Sushi Bar</span>
+<h3 class="font-headline-sm text-headline-sm text-white truncate">Neon Sakura</h3>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Suppression: 
+         Per the mandate, navigation is suppressed because this is an Empty/Error state 
+         that implies a break in the primary user journey, focusing entirely on the canvas 
+         to correct the search filters or view fallbacks. -->
+</body></html>

@@ -1,0 +1,1 @@
+[{idx}] {name} | {cuisines} | Rating:{rating} ({votes} votes) | Rs{cost} | {rest_type} | Online:{online} | Book:{book} | Popular:{dishes}

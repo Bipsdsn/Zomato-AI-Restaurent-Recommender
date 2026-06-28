@@ -1,0 +1,63 @@
+# ─── Secrets & Environment ──────────────────────────────────
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ─── Python ─────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# ─── Testing / Coverage ─────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.cache/
+.mypy_cache/
+.ruff_cache/
+
+# ─── Data & Databases (keep folder, ignore contents) ────────
+data/*
+!data/.gitkeep
+data/chroma_store/
+*.db
+*.sqlite3
+*.csv
+
+# ─── Logs (keep folder, ignore contents) ────────────────────
+logs/*
+!logs/.gitkeep
+*.log
+*.jsonl
+
+# ─── Models / caches ────────────────────────────────────────
+*.onnx
+*.tar.gz
+
+# ─── IDE / Editor ───────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

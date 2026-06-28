@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Refine Search - Craival</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#393939",
+                      "on-surface": "#e5e2e1",
+                      "secondary-fixed": "#ffe16d",
+                      "tertiary-container": "#41a447",
+                      "surface-tint": "#ffb3b1",
+                      "on-error": "#690005",
+                      "inverse-on-surface": "#313030",
+                      "primary": "#ffb3b1",
+                      "tertiary-fixed": "#94f990",
+                      "outline-variant": "#5b403f",
+                      "on-tertiary-fixed": "#002204",
+                      "secondary-fixed-dim": "#e9c400",
+                      "surface-container-high": "#2a2a2a",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#221b00",
+                      "on-tertiary": "#00390a",
+                      "inverse-primary": "#bb162c",
+                      "on-primary-container": "#5b000e",
+                      "surface-container-low": "#1b1b1b",
+                      "error": "#ffb4ab",
+                      "surface-container": "#20201f",
+                      "secondary-container": "#ffdb3c",
+                      "on-surface-variant": "#e4bebc",
+                      "on-secondary": "#3a3000",
+                      "surface": "#131313",
+                      "on-tertiary-container": "#003208",
+                      "primary-fixed-dim": "#ffb3b1",
+                      "outline": "#ab8987",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary-fixed-variant": "#92001c",
+                      "on-primary": "#680011",
+                      "secondary": "#fff9ef",
+                      "tertiary": "#78dc77",
+                      "surface-container-highest": "#353535",
+                      "primary-fixed": "#ffdad8",
+                      "on-background": "#e5e2e1",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-primary-fixed": "#410007",
+                      "on-secondary-container": "#725f00",
+                      "primary-container": "#ff535a",
+                      "on-tertiary-fixed-variant": "#005313",
+                      "background": "#131313",
+                      "surface-variant": "#353535",
+                      "on-secondary-fixed-variant": "#544600",
+                      "tertiary-fixed-dim": "#78dc77",
+                      "surface-dim": "#131313",
+                      "red-primary": "#E23744"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "48px",
+                      "margin-desktop": "64px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "xl": "32px",
+                      "base": "8px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-xl": ["Outfit"],
+                      "headline-xl-mobile": ["Outfit"],
+                      "headline-md": ["Outfit"],
+                      "headline-sm": ["Outfit"],
+                      "headline-lg": ["Outfit"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-xl-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "500"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(42, 42, 42, 0.4);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .input-focus-glow:focus {
+            outline: none;
+            border-color: #E23744;
+            box-shadow: 0 0 15px rgba(226, 55, 68, 0.3);
+        }
+
+        .slide-up-enter {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        .slide-up-enter-active {
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease-out;
+        }
+        
+        .slide-up-leave {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .slide-up-leave-active {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease-in;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden antialiased flex flex-col h-screen">
+<!-- Background Context (Blurred Results) -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none transition-all duration-500 blur-sm scale-95 opacity-50" id="background-context">
+<div class="h-full w-full bg-surface-container" data-alt="A blurred background showing an appetizing layout of high-end dark mode food recommendation cards. Subtle hints of deep blacks, rich red accents, and glossy food photography are visible through the heavy glassmorphic blur, establishing a premium, night-out dining aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAHbdBm_8LSk26FY7XLQZIgjNKiYkvU4DDbhgTfAeF_G9SMIYwfMEen2f_SRQWzoThEKHT_Pc0rOiG2VApBAe-VmvmJhaRarfdIxqDC01leREANLVg-qh3FUD4kTv1GTISEsN-QNV7f6d5md1EMNIj3AlQlUyQ-RRSAEUqzK9muZBvFAqIs2ZJYinCIhv78Odb4_q36CDyQ8L1hVgzuIm36KjO1g6rxCYGwDGdBTxgZA9p7h0ncJeneJQNTXeUfHdckLGdoF0wstYw')"></div>
+</div>
+<!-- Scrim -->
+<div class="absolute inset-0 bg-black/60 z-10 transition-opacity duration-300" id="scrim"></div>
+<!-- Main Container -->
+<main class="flex-1 flex flex-col justify-end z-20 relative h-full w-full max-w-3xl mx-auto pb-4 px-4 md:px-0">
+<!-- Bottom Sheet -->
+<div class="glass-panel w-full rounded-t-[32px] rounded-b-xl flex flex-col p-6 md:p-8 slide-up-enter slide-up-enter-active" id="refine-sheet">
+<!-- Handle -->
+<div class="w-12 h-1.5 bg-white/20 rounded-full mx-auto mb-6 cursor-grab"></div>
+<!-- Header -->
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface">Refine Search</h2>
+<button class="text-on-surface-variant hover:text-white transition-colors" id="close-btn">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Input Area -->
+<div class="mb-8 relative">
+<div class="absolute left-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<input class="w-full bg-surface-container-high/50 border border-white/10 text-on-surface placeholder:text-on-surface-variant/50 rounded-xl py-4 pl-12 pr-4 font-body-lg text-body-lg input-focus-glow transition-all" id="refine-input" placeholder="Try: cheaper options, more spicy food..." type="text"/>
+</div>
+<!-- Quick Actions -->
+<div class="mb-10">
+<p class="font-label-md text-label-md text-on-surface-variant mb-3 uppercase tracking-wider">Quick Suggestions</p>
+<div class="flex flex-wrap gap-3">
+<button class="chip px-4 py-2 rounded-full border border-white/10 bg-surface-container-high/40 hover:bg-surface-bright/40 text-on-surface font-body-sm text-body-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                        Cheaper options
+                    </button>
+<button class="chip px-4 py-2 rounded-full border border-white/10 bg-surface-container-high/40 hover:bg-surface-bright/40 text-on-surface font-body-sm text-body-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">shuffle</span>
+                        Show me something else
+                    </button>
+<button class="chip px-4 py-2 rounded-full border border-white/10 bg-surface-container-high/40 hover:bg-surface-bright/40 text-on-surface font-body-sm text-body-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+                        Try Chinese instead
+                    </button>
+<button class="chip px-4 py-2 rounded-full border border-white/10 bg-surface-container-high/40 hover:bg-surface-bright/40 text-on-surface font-body-sm text-body-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                        Same but in Indiranagar
+                    </button>
+</div>
+</div>
+<!-- CTA -->
+<button class="w-full bg-[#E23744] hover:bg-[#bb162c] text-white font-headline-sm text-headline-sm py-4 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-primary/20" id="update-btn">
+                Update Recommendations
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Loading State (Hidden by default) -->
+<div class="absolute inset-0 flex flex-col items-center justify-center hidden z-30" id="loading-state">
+<div class="w-24 h-24 relative mb-6">
+<!-- AI recommendation sparkle/spinner effect -->
+<div class="absolute inset-0 rounded-full border-4 border-surface-container-high"></div>
+<div class="absolute inset-0 rounded-full border-4 border-t-[#E23744] border-r-[#FFD700] border-b-transparent border-l-transparent animate-spin"></div>
+<div class="absolute inset-0 flex items-center justify-center text-[#E23744] animate-pulse">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Refining your tastes...</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Looking for slightly cheaper, spicier options.</p>
+</div>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sheet = document.getElementById('refine-sheet');
+            const scrim = document.getElementById('scrim');
+            const input = document.getElementById('refine-input');
+            const chips = document.querySelectorAll('.chip');
+            const updateBtn = document.getElementById('update-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const loadingState = document.getElementById('loading-state');
+            const bgContext = document.getElementById('background-context');
+
+            // Handle chip selection
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    const text = chip.textContent.trim().replace(/^[a-z_]+/, '').trim(); // Remove icon text
+                    input.value = text;
+                    input.focus();
+                    
+                    // Visual feedback on chip
+                    chips.forEach(c => c.classList.remove('bg-primary/20', 'border-primary/50', 'text-primary'));
+                    chip.classList.add('bg-primary/20', 'border-primary/50', 'text-primary');
+                });
+            });
+
+            // Handle closing
+            const closeSheet = () => {
+                sheet.classList.remove('slide-up-enter-active');
+                sheet.classList.add('slide-up-leave-active');
+                scrim.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // For demo purposes, we don't actually navigate away, just reset
+                    sheet.style.display = 'none';
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeSheet);
+            scrim.addEventListener('click', closeSheet);
+
+            // Handle submission
+            updateBtn.addEventListener('click', () => {
+                // Collapse sheet
+                sheet.classList.remove('slide-up-enter-active');
+                sheet.classList.add('slide-up-leave-active');
+                
+                // Show loading state
+                setTimeout(() => {
+                    sheet.style.display = 'none';
+                    loadingState.classList.remove('hidden');
+                    
+                    // Animate background out of blur to simulate results refreshing
+                    setTimeout(() => {
+                         bgContext.classList.remove('blur-sm', 'scale-95', 'opacity-50');
+                         bgContext.classList.add('blur-none', 'scale-100', 'opacity-100');
+                         scrim.style.opacity = '0';
+                    }, 1500);
+
+                }, 300);
+            });
+            
+            // Auto-focus input after a slight delay to allow slide animation
+            setTimeout(() => {
+                input.focus();
+            }, 500);
+        });
+    </script>
+</body></html>

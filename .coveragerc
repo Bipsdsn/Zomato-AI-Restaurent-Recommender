@@ -1,0 +1,20 @@
+# Coverage configuration — scope coverage to core logic.
+[run]
+source = src
+omit =
+    # Application / CLI entry points (thin wiring, run manually, not unit logic)
+    src/app.py
+    src/web.py
+    # One-time offline data ingestion script (network + HuggingFace download)
+    src/data_loader.py
+
+[report]
+# Don't count boilerplate / non-testable lines against coverage.
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+    raise NotImplementedError
+    @abstractmethod
+    \.\.\.
+    def __repr__
+show_missing = True

@@ -1,0 +1,19 @@
+Return your response as a valid JSON array with exactly this structure (no markdown, no code fences, just raw JSON):
+[
+  {
+    "rank": 1,
+    "name": "Exact Restaurant Name from data",
+    "explanation": "2-3 sentence personalized explanation of why this is the best match for the user's preferences"
+  },
+  {
+    "rank": 2,
+    "name": "...",
+    "explanation": "..."
+  }
+]
+
+IMPORTANT:
+- Return exactly 5 restaurants (or fewer if less are available).
+- The "name" field MUST exactly match a restaurant name from the provided data.
+- Each explanation should be specific to the user's preferences, not generic.
+- Do NOT include any text before or after the JSON array.
