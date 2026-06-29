@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Craival — AI Restaurant Recommendations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: { "brand": "#E23744", "brand-dark": "#bb162c", "gold": "#FFD700", "success": "#4CAF50" },
+      fontFamily: { head: ["Outfit", "sans-serif"], body: ["Inter", "sans-serif"] },
+    }},
+  }
+</script>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body class="font-body min-h-screen antialiased">
+
+<div class="craival-bg" aria-hidden="true"></div>
+
+<!-- ============ SPLASH ============ -->
+<section id="splash-screen" class="fixed inset-0 z-[70] flex flex-col items-center justify-center text-center px-6 splash-gradient">
+  <div class="splash-emojis" aria-hidden="true"><span>🍕</span><span>🍜</span><span>🍣</span><span>🍔</span><span>🥘</span><span>🍰</span></div>
+  <div class="relative z-10 flex flex-col items-center fade-in-up">
+    <h1 class="font-head font-bold text-6xl md:text-7xl text-white tracking-tight">Craival</h1>
+    <div class="w-2 h-2 rounded-full bg-white/90 mt-3 mb-6"></div>
+    <p class="text-white/90 text-xl md:text-2xl max-w-md mb-10">Discover your next favorite restaurant — curated by AI.</p>
+    <button id="get-started" class="bg-white text-brand font-semibold rounded-full px-10 py-4 text-lg shadow-2xl pulse-btn transition hover:scale-105">Get Started</button>
+  </div>
+</section>
+
+<!-- Top nav -->
+<nav class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-5 md:px-16 h-16 nav-glass">
+  <button id="nav-home" class="flex items-center gap-2">
+    <span class="font-head font-bold text-2xl text-brand">Craival</span>
+    <span class="w-1.5 h-1.5 rounded-full bg-brand mt-2"></span>
+  </button>
+  <div class="flex items-center gap-3">
+    <span class="text-xs uppercase tracking-widest muted hidden sm:block mr-2">AI Restaurant Guide · Bangalore</span>
+    <button id="theme-toggle" aria-label="Toggle theme" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-black/10 transition muted">
+      <span class="material-symbols-outlined" id="theme-icon">light_mode</span>
+    </button>
+  </div>
+</nav>
+
+<main class="pt-16">
+
+  <!-- ============ HOME / SEARCH ============ -->
+  <section id="home-screen" class="hidden min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-5 md:px-16 py-12">
+    <div class="text-center mb-8 max-w-2xl fade-in-up">
+      <h1 class="font-head font-bold text-4xl md:text-5xl mb-3 leading-tight">What are you craving?</h1>
+      <p class="muted text-lg">AI-powered picks across
+        <span class="strong font-semibold"><span id="stat-restaurants">...</span></span> restaurants in
+        <span class="strong font-semibold"><span id="stat-locations">...</span></span> Bangalore localities.</p>
+    </div>
+
+    <div class="w-full max-w-2xl glass-panel rounded-xl flex items-center px-3 py-2 mb-5 focus-within:ring-2 focus-within:ring-brand/60 transition">
+      <span class="material-symbols-outlined muted">search</span>
+      <input id="search-input" type="text" autocomplete="off"
+        class="flex-1 bg-transparent border-0 focus:ring-0 text-lg px-3 py-2 input-text" placeholder="Try: cheap Italian near Koramangala..."/>
+      <button id="search-btn" class="bg-brand hover:bg-brand-dark text-white font-semibold rounded-full px-5 py-2.5 transition flex items-center gap-1 shrink-0">
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span><span class="hidden sm:inline">Find</span>
+      </button>
+    </div>
+
+    <!-- Custom dropdown filters (uniform, bounded popups) -->
+    <div class="w-full max-w-2xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="cdrop" id="cd-location"></div>
+      <div class="cdrop" id="cd-budget"></div>
+      <div class="cdrop" id="cd-cuisine"></div>
+      <div class="cdrop" id="cd-rating"></div>
+    </div>
+    <p id="home-error" class="text-brand text-sm mt-4 h-5"></p>
+
+    <div class="mt-4 flex flex-wrap justify-center gap-2 max-w-2xl">
+      <button class="example-chip">rooftop date night in Indiranagar</button>
+      <button class="example-chip">family-friendly under ₹500 in BTM</button>
+      <button class="example-chip">best biryani in Koramangala</button>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section id="results-screen" class="hidden px-5 md:px-16 py-10 max-w-7xl mx-auto pb-40">
+    <header class="mb-8 flex flex-col gap-2">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <button id="back-home" class="flex items-center gap-1 muted hover:text-brand transition text-sm">
+          <span class="material-symbols-outlined text-[20px]">arrow_back</span> New search
+        </button>
+        <span id="source-badge" class="glass-panel px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]" id="source-icon">auto_awesome</span><span id="source-text">AI Ranked</span>
+        </span>
+      </div>
+      <h2 class="font-head font-semibold text-3xl">Top Picks for You</h2>
+      <p id="result-meta" class="muted"></p>
+      <div id="relaxed-badge" class="hidden items-center gap-2 relaxed-box px-4 py-2 rounded-lg w-fit">
+        <span class="material-symbols-outlined text-success text-[20px]">info</span>
+        <span id="relaxed-text" class="text-sm"></span>
+      </div>
+    </header>
+    <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- ============ DETAIL ============ -->
+  <section id="detail-screen" class="hidden fixed inset-0 z-[60] overflow-y-auto detail-bg">
+    <div class="detail-topbar">
+      <button id="detail-back" class="detail-back-btn"><span class="material-symbols-outlined text-[20px]">arrow_back</span> Back to results</button>
+    </div>
+    <div id="detail-content"></div>
+  </section>
+
+  <!-- ============ EMPTY ============ -->
+  <section id="empty-screen" class="hidden min-h-[60vh] flex flex-col items-center justify-center px-5 text-center">
+    <div class="glass-panel rounded-xl p-10 max-w-lg w-full flex flex-col items-center gap-5">
+      <div class="floating w-24 h-24 rounded-full bg-brand/10 flex items-center justify-center"><span class="material-symbols-outlined text-brand" style="font-size:56px;">ramen_dining</span></div>
+      <h2 class="font-head font-semibold text-2xl text-brand">No matches found</h2>
+      <p class="muted">We couldn't find spots matching your exact cravings. Try adjusting your preferences.</p>
+      <button id="empty-retry" class="bg-brand hover:bg-brand-dark text-white font-semibold rounded-full px-8 py-3 transition flex items-center gap-2"><span class="material-symbols-outlined">tune</span> Adjust search</button>
+    </div>
+  </section>
+</main>
+
+<!-- ============ REFINE BAR ============ -->
+<div id="refine-bar" class="hidden fixed bottom-6 inset-x-0 z-40 px-5 flex justify-center pointer-events-none">
+  <div class="glass-panel rounded-full px-6 py-3 flex items-center gap-4 pointer-events-auto shadow-2xl">
+    <span class="text-xs uppercase tracking-widest muted hidden sm:block">Not quite right?</span>
+    <button id="open-refine" class="bg-brand hover:bg-brand-dark text-white px-4 py-2 rounded-full text-sm font-semibold transition flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">tune</span> Refine Search</button>
+  </div>
+</div>
+
+<!-- ============ REFINE SHEET ============ -->
+<div id="refine-overlay" class="hidden fixed inset-0 z-[58]">
+  <div id="refine-scrim" class="absolute inset-0 bg-black/60"></div>
+  <div class="absolute inset-x-0 bottom-0 flex justify-center">
+    <div id="refine-sheet" class="glass-panel w-full max-w-2xl rounded-t-[32px] p-6 md:p-8 translate-y-full transition-transform duration-300">
+      <div class="w-12 h-1.5 bg-current opacity-20 rounded-full mx-auto mb-6"></div>
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="font-head font-semibold text-2xl">Refine Search</h2>
+        <button id="close-refine" class="muted hover:text-brand transition"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <div class="relative mb-6">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-brand">auto_awesome</span>
+        <input id="refine-input" type="text" placeholder="Try: cheaper options, more spicy food..." class="w-full refine-field rounded-xl py-4 pl-12 pr-4 text-lg focus:ring-2 focus:ring-brand/60 transition"/>
+      </div>
+      <p class="text-xs uppercase tracking-widest muted mb-3">Quick suggestions</p>
+      <div class="flex flex-wrap gap-3 mb-8">
+        <button class="refine-chip">Cheaper options</button>
+        <button class="refine-chip">Show me something else</button>
+        <button class="refine-chip">Try Chinese instead</button>
+        <button class="refine-chip">Higher rated only</button>
+      </div>
+      <button id="update-recs" class="w-full bg-brand hover:bg-brand-dark text-white font-semibold text-lg py-4 rounded-xl transition flex items-center justify-center gap-2">Update Recommendations <span class="material-symbols-outlined text-[20px]">arrow_forward</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div id="toast" class="hidden fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] w-full max-w-xs">
+  <div class="glass-panel rounded-2xl p-8 flex flex-col items-center gap-3 shadow-2xl">
+    <div class="w-16 h-16 rounded-full bg-brand/10 border border-brand/20 flex items-center justify-center text-brand toast-pulse"><span class="material-symbols-outlined" style="font-size:40px;">check_circle</span></div>
+    <p class="font-head text-lg font-medium">Thanks for your feedback!</p>
+    <p class="text-sm muted text-center">Your input helps us improve.</p>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

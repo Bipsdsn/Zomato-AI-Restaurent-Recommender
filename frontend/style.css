@@ -1,0 +1,202 @@
+/* Craival — UI styles with light/dark theming (v4) */
+
+:root { --brand: #E23744; --gold: #FFD700; }
+
+html.dark {
+  --bg: #131313; --bg-2: #0e0e0e; --text: #ececea; --muted: #a8a29e;
+  --glass-bg: rgba(42, 42, 42, 0.55); --glass-border: rgba(255, 255, 255, 0.12);
+  --field-bg: rgba(255, 255, 255, 0.06); --nav-bg: rgba(19, 19, 19, 0.72);
+  --relaxed-bg: rgba(42, 42, 42, 0.7); --shadow: rgba(0, 0, 0, 0.45);
+  --ring: rgba(255,255,255,0.08);
+}
+html:not(.dark) {
+  --bg: #f6f1ee; --bg-2: #ece4df; --text: #20140f; --muted: #6b6b6b;
+  --glass-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(0, 0, 0, 0.10);
+  --field-bg: #ffffff; --nav-bg: rgba(255, 255, 255, 0.9);
+  --relaxed-bg: #ffffff; --shadow: rgba(0, 0, 0, 0.12);
+  --ring: rgba(0,0,0,0.06);
+}
+
+body { background-color: var(--bg); color: var(--text); transition: background-color .3s, color .3s; }
+.muted { color: var(--muted); }
+.strong { color: var(--text); }
+.input-text { color: var(--text); }
+.input-text::placeholder { color: var(--muted); opacity: .8; }
+
+.material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; line-height: 1; vertical-align: middle; }
+
+/* Animated backdrop */
+.craival-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(135deg, rgba(226,55,68,0.12) 0%, var(--bg) 55%, var(--bg-2) 100%);
+  background-size: 200% 200%; animation: bgShift 20s ease-in-out infinite;
+}
+@keyframes bgShift { 0%,100% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } }
+main, nav { position: relative; z-index: 1; }
+
+.nav-glass { background: var(--nav-bg); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+
+.glass-panel {
+  background: var(--glass-bg); backdrop-filter: blur(20px) saturate(140%); -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid var(--glass-border); box-shadow: 0 10px 30px -10px var(--shadow); color: var(--text);
+}
+
+/* ---- Splash (always dark gradient) ---- */
+.splash-gradient { background: linear-gradient(135deg, #E23744 0%, #8c1420 45%, #131313 100%); overflow: hidden; }
+.splash-emojis { position: absolute; inset: 0; pointer-events: none; }
+.splash-emojis span { position: absolute; font-size: 2.5rem; opacity: .18; animation: floatUp 9s ease-in-out infinite; }
+.splash-emojis span:nth-child(1){left:10%;top:70%;animation-delay:0s}
+.splash-emojis span:nth-child(2){left:80%;top:60%;animation-delay:1.2s}
+.splash-emojis span:nth-child(3){left:25%;top:30%;animation-delay:2.4s}
+.splash-emojis span:nth-child(4){left:65%;top:25%;animation-delay:.6s}
+.splash-emojis span:nth-child(5){left:45%;top:80%;animation-delay:1.8s}
+.splash-emojis span:nth-child(6){left:88%;top:18%;animation-delay:3s}
+@keyframes floatUp { 0%,100%{transform:translateY(0) rotate(0)} 50%{transform:translateY(-30px) rotate(8deg)} }
+#splash-screen.hide { opacity: 0; transform: scale(1.05); pointer-events: none; transition: opacity .5s ease, transform .5s ease; }
+
+.fade-in-up { animation: fadeUp .6s cubic-bezier(0.16,1,0.3,1) both; }
+.pulse-btn { animation: btnPulse 2.4s ease-in-out infinite; }
+@keyframes btnPulse { 0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)} 50%{box-shadow:0 0 0 14px rgba(255,255,255,0)} }
+
+/* ---- Uniform filter pills ---- */
+.pill {
+  display: flex; align-items: center; gap: .5rem;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 9999px; padding: 0 .9rem; height: 48px; width: 100%;
+  transition: border-color .2s, box-shadow .2s; cursor: text;
+}
+.pill:focus-within { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(226,55,68,.15); }
+.pill-input {
+  flex: 1 1 auto; min-width: 0; width: 100%;
+  background: transparent; border: 0; color: var(--text); font-size: .9rem; outline: none;
+}
+.pill-input:focus { box-shadow: none; }
+.pill-input::placeholder { color: var(--muted); }
+select.pill-input { cursor: pointer; -webkit-appearance: none; appearance: none; }
+.pill-input option { background: var(--bg); color: var(--text); }
+
+/* ---- Chips ---- */
+.example-chip, .refine-chip {
+  padding: .5rem 1rem; border-radius: 9999px; border: 1px solid var(--glass-border);
+  background: var(--glass-bg); color: var(--text); font-size: .8rem; transition: all .2s; cursor: pointer;
+}
+.example-chip:hover, .refine-chip:hover { background: rgba(226,55,68,.14); border-color: rgba(226,55,68,.5); }
+.refine-chip.active { background: rgba(226,55,68,.22); border-color: var(--brand); }
+.refine-field { background: var(--field-bg); border: 1px solid var(--glass-border); color: var(--text); }
+.refine-field::placeholder { color: var(--muted); }
+.relaxed-box { background: var(--relaxed-bg); border: 1px solid var(--glass-border); }
+
+/* ---- Cards ---- */
+.rcard { opacity: 0; transform: translateY(20px); animation: fadeUp .6s cubic-bezier(0.16,1,0.3,1) forwards; cursor: pointer; }
+.rcard:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -12px var(--shadow); }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.card-banner { height: 7rem; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; overflow: hidden; }
+.divider { border-top: 1px solid var(--glass-border); }
+.ai-insight { background: rgba(226,55,68,0.07); border-left: 3px solid transparent; border-image: linear-gradient(to bottom,#E23744,#FFD700) 1; }
+.stars { color: var(--gold); letter-spacing: 1px; }
+.stars .empty { color: var(--muted); opacity: .4; }
+.feat-badge { border: 1px solid var(--glass-border); border-radius: 9999px; padding: .15rem .6rem; font-size: .65rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+
+/* ---- Detail (hero always dark for legibility) ---- */
+.detail-bg { background: var(--bg); }
+.detail-hero { position: relative; min-height: 240px; display: flex; align-items: flex-end; overflow: hidden;
+  background: radial-gradient(circle at 25% 15%, rgba(226,55,68,.55), #131313 75%); color: #fff; }
+.detail-hero .muted { color: rgba(255,255,255,.75); }
+.detail-hero .hero-emoji { position: absolute; right: 1.5rem; top: 1rem; font-size: 7rem; opacity: .25; }
+.slide-in-right { animation: slideInRight .35s cubic-bezier(0.16,1,0.3,1) both; }
+@keyframes slideInRight { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.dish-chip { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: .6rem .9rem; font-size: .85rem; color: var(--text); }
+
+/* ---- Misc ---- */
+.floating { animation: float 4s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+.toast-pulse { animation: toastPulse .6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+@keyframes toastPulse { 0%{transform:scale(.8)} 50%{transform:scale(1.1)} 100%{transform:scale(1)} }
+.skeleton { background: linear-gradient(90deg, rgba(128,128,128,.08) 0%, rgba(128,128,128,.18) 50%, rgba(128,128,128,.08) 100%); background-size: 200% 100%; animation: shimmer 1.6s infinite linear; }
+@keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+.pulse-text { animation: pulseOpacity 2s infinite ease-in-out; }
+@keyframes pulseOpacity { 0%,100%{opacity:.6} 50%{opacity:1} }
+
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation: none !important; transition: none !important; } }
+
+/* ---- Custom dropdown (replaces native select / datalist) ---- */
+.cdrop { position: relative; width: 100%; text-align: left; }
+.cdrop-label { display: block; font-size: .68rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: .3rem; padding-left: .25rem; }
+.cdrop-btn {
+  width: 100%; height: 48px; display: flex; align-items: center; gap: .5rem; padding: 0 .85rem;
+  border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--glass-border);
+  color: var(--text); cursor: pointer; transition: border-color .2s, box-shadow .2s;
+}
+.cdrop-btn:hover { border-color: rgba(226,55,68,.4); }
+.cdrop-btn.open { border-color: var(--brand); box-shadow: 0 0 0 3px rgba(226,55,68,.15); }
+.cdrop-value { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .9rem; }
+.cdrop-btn.placeholder .cdrop-value { color: var(--muted); }
+.cdrop-chevron { transition: transform .2s; font-size: 20px; color: var(--muted); }
+.cdrop-btn.open .cdrop-chevron { transform: rotate(180deg); }
+
+.cdrop-panel {
+  position: absolute; z-index: 45; left: 0; right: 0; margin-top: .4rem;
+  background: var(--bg); border: 1px solid var(--glass-border); border-radius: 12px;
+  box-shadow: 0 18px 44px -12px var(--shadow); overflow: hidden;
+  animation: dropIn .16s ease both;
+}
+@keyframes dropIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.cdrop-search { width: 100%; padding: .6rem .85rem; background: var(--field-bg); border: 0; border-bottom: 1px solid var(--glass-border); color: var(--text); outline: none; font-size: .85rem; }
+.cdrop-search::placeholder { color: var(--muted); }
+.cdrop-list { max-height: 240px; overflow-y: auto; list-style: none; margin: 0; padding: .3rem; overscroll-behavior: contain; }
+.cdrop-opt { padding: .55rem .7rem; border-radius: 8px; cursor: pointer; font-size: .88rem; line-height: 1.3; }
+.cdrop-opt:hover, .cdrop-opt.active { background: rgba(226,55,68,.16); color: var(--brand); }
+.cdrop-empty { padding: .7rem; color: var(--muted); font-size: .82rem; text-align: center; }
+
+/* ---- Mobile optimization ---- */
+@media (max-width: 640px) {
+  .detail-hero { min-height: 200px; }
+  .detail-hero .hero-emoji { font-size: 5rem; right: 1rem; }
+  .cdrop-list { max-height: 200px; }
+  .example-chip { font-size: .72rem; padding: .4rem .7rem; }
+}
+
+/* ---- Override @tailwindcss/forms white input backgrounds (theme-aware) ---- */
+input.refine-field,
+input.cdrop-search {
+  background-color: var(--field-bg) !important;
+  color: var(--text) !important;
+  border-color: var(--glass-border) !important;
+}
+#search-input {
+  background-color: transparent !important;
+  color: var(--text) !important;
+}
+input.refine-field::placeholder,
+input.cdrop-search::placeholder,
+#search-input::placeholder { color: var(--muted) !important; }
+
+/* ---- Detail back button (always visible over hero) ---- */
+.detail-back {
+  position: absolute; top: 1rem; left: 1rem; z-index: 20;
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .5rem .9rem; border-radius: 9999px; color: #fff; font-size: .9rem; font-weight: 600;
+  background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.2);
+  cursor: pointer; transition: background .2s;
+}
+.detail-back:hover { background: rgba(0, 0, 0, 0.65); }
+
+/* ---- Detail sticky top bar with back button (always visible) ---- */
+.detail-topbar {
+  position: sticky; top: 0; z-index: 30;
+  display: flex; align-items: center;
+  padding: .6rem .9rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px -8px var(--shadow);
+}
+.detail-back-btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .5rem 1rem; border-radius: 9999px;
+  background: var(--brand) !important; color: #fff !important; font-size: .9rem; font-weight: 600;
+  border: 0; cursor: pointer; transition: background .2s, transform .15s;
+}
+.detail-back-btn:hover { background: var(--brand-dark, #bb162c) !important; transform: translateX(-2px); }
+
+/* Hide the app nav while a restaurant detail page is open (avoids logo overlap) */
+body.detail-open .nav-glass { display: none; }

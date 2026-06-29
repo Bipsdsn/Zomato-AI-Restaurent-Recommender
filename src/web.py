@@ -20,6 +20,7 @@ from dataclasses import asdict
 
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, jsonify, make_response
+from flask_cors import CORS
 
 load_dotenv()
 
@@ -37,6 +38,13 @@ app = Flask(
     template_folder=os.path.join(BASE_DIR, "templates"),
     static_folder=os.path.join(BASE_DIR, "static"),
 )
+
+# Enable CORS for the static Vercel frontend and local development
+CORS(app, resources={r"/api/*": {"origins": [
+    "https://craival.vercel.app",       # Update this with the actual Vercel URL later
+    "http://localhost:3000",            # local frontend dev
+    "http://127.0.0.1:3000",            # local frontend dev
+]}})
 
 # Build the orchestrator once at startup (loads SQLite + ChromaDB).
 _orchestrator = create_orchestrator()
@@ -96,6 +104,14 @@ def index():
 @app.route("/api/locations")
 def api_locations():
     return jsonify({"locations": _orchestrator.get_locations()})
+
+
+@app.route("/api/stats")
+def api_stats():
+    return jsonify({
+        "restaurant_count": _orchestrator.get_restaurant_count(),
+        "location_count": len(_orchestrator.get_locations()),
+    })
 
 
 @app.route("/api/cuisines")
