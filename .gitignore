@@ -35,8 +35,6 @@ coverage.xml
 # ─── Data & Databases (keep folder, ignore contents) ────────
 data/*
 !data/.gitkeep
-data/chroma_store/
-*.db
 *.sqlite3
 *.csv
 
