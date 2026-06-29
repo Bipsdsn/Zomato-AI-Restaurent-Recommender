@@ -41,7 +41,7 @@ app = Flask(
 
 # Enable CORS for the static Vercel frontend and local development
 CORS(app, resources={r"/api/*": {"origins": [
-    "https://craival.vercel.app",       # Update this with the actual Vercel URL later
+    "https://zomato-ai-restaurent-recommender-six.vercel.app",
     "http://localhost:3000",            # local frontend dev
     "http://127.0.0.1:3000",            # local frontend dev
 ]}})
